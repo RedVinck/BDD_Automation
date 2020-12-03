@@ -18,6 +18,7 @@ import org.openqa.selenium.support.PageFactory;
 import ui.Page;
 import ui.PatientsPage;
 import ui.RegisterPage;
+import ui.WebDriverService;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class ViewAllPatientsSteps {
         //System.setProperty("webdriver.chrome.driver", "/Users/.../web3pers/chromedriver");
         // windows: gebruik dubbele \\ om pad aan te geven
         // hint: zoek een werkende test op van web 2 ...
-        System.setProperty("webdriver.chrome.driver", "/Applications/chromedriver");
+        System.setProperty("webdriver.chrome.driver", WebDriverService.getDriver());
         driver = new ChromeDriver();
     }
 
