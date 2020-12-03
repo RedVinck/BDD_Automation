@@ -1,22 +1,17 @@
 package ui.steps;
 
-import domain.model.Examination;
-import domain.service.PatientService;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import domain.model.Patient;
 
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import ui.Page;
-import ui.PatientsPage;
+import ui.MealsPage;
 import ui.RegisterPage;
 import ui.WebDriverService;
 
@@ -65,14 +60,14 @@ public class ViewAllPatientsSteps {
 
     @When("Martha requests to get all patients")
     public void martha_requests_to_get_all_patients() {
-        currentPage = PageFactory.initElements(driver, PatientsPage.class);
+        currentPage = PageFactory.initElements(driver, MealsPage.class);
     }
 
     @Then("Martha should be able to get the list of all social security numbers of the registered patients")
     public void martha_should_be_able_to_get_the_list_of_all_social_security_numbers_of_the_registered_patients() {
         assertEquals("Patient Overview - BMI app", driver.getTitle());
-        assertTrue(((PatientsPage)currentPage).containsPatientWithSSN("93051822361"));
-        assertTrue(((PatientsPage)currentPage).containsPatientWithSSN("87081220062"));
+        assertTrue(((MealsPage)currentPage).containsPatientWithSSN("93051822361"));
+        assertTrue(((MealsPage)currentPage).containsPatientWithSSN("87081220062"));
     }
 
     @Given("there are no patients registered")
@@ -82,14 +77,14 @@ public class ViewAllPatientsSteps {
 
     @Then("Martha should be able to get a message that there are no patients registered")
     public void martha_should_be_able_to_get_a_message_that_there_are_no_patients_registered() {
-        currentPage = PageFactory.initElements(driver, PatientsPage.class);
-        assertFalse(((PatientsPage)currentPage).containsPatientWithSSN("93051822361"));
-        assertTrue(((PatientsPage)currentPage).containsErrorMessage("No patients found"));
+        currentPage = PageFactory.initElements(driver, MealsPage.class);
+        assertFalse(((MealsPage)currentPage).containsPatientWithSSN("93051822361"));
+        assertTrue(((MealsPage)currentPage).containsErrorMessage("No patients found"));
     }
 
     @Then("Martha should be able to get {string}")
     public void martha_should_be_able_to_get(String ssn) {
-        assertTrue(((PatientsPage)currentPage).containsPatientWithSSN(ssn));
+        assertTrue(((MealsPage)currentPage).containsPatientWithSSN(ssn));
     }
 
     @Given("the following patients are registered")

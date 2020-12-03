@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class PatientsPage extends Page {
+public class MealsPage extends Page {
 
-    public PatientsPage(WebDriver driver) {
+    public MealsPage(WebDriver driver) {
         super(driver);
         driver.get(getPath()+"?command=Overview");
     }
