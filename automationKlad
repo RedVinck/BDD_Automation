@@ -1,0 +1,162 @@
+//Rule: Toon alle maaltijden die op het menu staan
+//Scenario: Alle maaltijden worden getoond
+
+@Given("dat er maaltijden op het menu staan")
+public void dat_er_maaltijden_op_het_menu_staan(){
+	AddMenuPage page = PageFactory.initElements(driver, AddMenuPage.class);
+	page.setName("Broodje Martino");
+	page.setPrice( );
+	page.setCategory("Broodjes");
+
+	page = PageFactory.initElements(driver, AddMenuPage.class);
+	page.setName("Broodje Kaas");
+	page.setPrice( );
+	page.setCategory("Broodjes");
+}
+
+@When("Jan op het menu kijkt")
+public void jan_op_het_menu_kijkt(){
+	currentPage = PageFactory.initElements(driver, MenuPage.class);
+}
+
+@Then("worden alle maaltijden getoond die op het menu staan")
+public void worden_alle_maaltijden_getoond_die_op_het_menu_staan(){
+	assertEquals("Menu", driver.getTitle());
+	assertTrue(((MenuPage)currentPage).containsMaaltijdWithName("Broodje Martino"));
+	assertTrue(((MenuPage)currentPage).containsMaaltijdWithName("Broodje Kaas"));
+}
+
+//Scenario: Er worden geen maaltijden getoond want er staan geen maaltijden op het menu
+
+@Given("er geen maaltijden op het menu staan")
+public void er_geen_maaltijden_op_het_menu_staan(){
+}
+
+@When("Jan op het menu kijkt")
+public void jan_op_het_menu_kijkt(){
+	currentPage = PageFactory.initElements(driver, MenuPage.class);
+}
+
+@Then("krijgt “Jan” een melding dat er momenteel nog geen maaltijden op het menu staan")
+public void(krijgt_jan_een_melding_dat_er_momenteel_nog_geen_maaltijden_op_het_menu_staan){
+	assertEquals("Menu", driver.getTitle());
+	assertTrue(((MenuPage)currentPage).containsPWithText("Er zijn nog geen maaltijden beschikbaar")); //public boolean containsPWithText(String string) kijkt of er een <p> is in de html met de gezochte tekst
+}
+
+
+
+
+
+//Rule: Informatie over allergieën en al dan niet vegetarisch moet getoond worden
+//Scenario: Jan krijgt extra informatie bij een maaltijd
+
+@Given("dat er maaltijden zijn waar extra informatie bij hoort")
+public void dat_er_maaltijden_zijn_waar_extra_informatie_bij_hoort(){
+	AddMenuPage page = PageFactory.initElements(driver, AddMenuPage.class);
+	page.setName("Broodje brie met walnoten");
+	page.setPrice( );
+	page.setCategory("Broodjes");
+	page.setContainsNuts(true);
+	page.setVegetarian(true);
+	set.ContainsLactose(true); //Ook nog een variabele voor gluten?
+
+	page = PageFactory.initElements(driver, AddMenuPage.class);
+	page.setName("Broodje Veggylicious");
+	page.setPrice( );
+	page.setCategory("Broodjes");
+	page.setContainsNuts(false);
+	page.setVegetarian(true);
+	set.ContainsLactose(false);
+
+	page = PageFactory.initElements(driver, AddMenuPage.class);
+	page.setName("Frikandel");
+	page.setPrice( );
+	page.setCategory("");
+	page.setContainsNuts(false);
+	page.setVegetarian(false);
+	set.ContainsLactose(false);
+	
+
+@When("Jan het menu opvraagt")
+public void jan_het_menu_opvraagt(){
+	currentPage = PageFactory.initElements(driver, MenuPage.class);
+}
+
+@Then("zou Jan het menu te zien moeten krijgen met bij elke maaltijd extra informatie over wat deze bevat")
+public void zou_jan_het_menu_te_zien_moeten_krijgen_met_bij_elke_maaltijd_extra_informatie_over_wat_deze_bevat
+	assertEquals("Menu", driver.getTitle());
+	assertTrue(((MenuPage)currentPage).containsMaaltijdWithName("Broodje brie met walnoten"));
+	assertTrue(((MenuPage)currentPage).containsMaaltijdWithNotificationNuts()); //Hoe ga je ervoor zorgen dat je weet dat je bij de juiste maaltijd kijkt? Misschien opsplitsen in 3 gevallen dat je telkens maar 1 maaltijd toevoegd, we zouden in iedergeval al van 3 maaltijden naar 2 kunnen gaan door te zorgen dat elke boolean één keer als false en één keer als true voorkomt.
+	assertTrue(((MenuPage)currentPage).containsMaaltijdWithName("Broodje Veggylicious"));
+
+	assertTrue(((MenuPage)currentPage).containsMaaltijdWithName("Frikandel"));
+
+
+
+
+
+//Rule: De prijs moet altijd getoond worden
+//Scenario: De prijs wordt bij de maaltijd getoond
+
+@Given("dat er maaltijden op het menu staan")
+public void dat_er_maaltijden_op_het_menu_staan(){
+	AddMenuPage page = PageFactory.initElements(driver, AddMenuPage.class);
+	page.setName("Broodje Martino");
+	page.setPrice(2.00);
+	page.setCategory("Broodjes");
+
+	page = PageFactory.initElements(driver, AddMenuPage.class);
+	page.setName("Lasagne");
+	page.setPrice(4.30);
+	page.setCategory("Pasta");
+}
+
+@When("Jan het overzicht bekijkt")
+public void jan_het_overzicht_bekijkt(){
+	currentPage = PageFactory.initElements(driver, MenuPage.class);
+}
+
+@Then("ziet Jan bij elke maaltijd de prijs van de maaltijd")
+public void ziet_jan_bij_elke_maaltijd_de_prijs_van_de_maaltijd(){
+	assertEquals("Menu", driver.getTitle());
+	assertTrue(((MenuPage)currentPage).containsMaaltijdWithPrice("€ 2,00"));
+	assertTrue(((MenuPage)currentPage).containsMaaltijdWithPrice("€ 4,30"));
+}
+
+
+
+
+
+//Rule: Maaltijden worden gegroepeerd per categorie
+//Scenario:  Jan bekijkt het overzicht
+
+@Given("er maaltijden van verschillende categorieën op het menu staan")
+public void er_maaltijden_van_verschillende_categorieën_op_het_menu_staan(){
+	AddMenuPage page = PageFactory.initElements(driver, AddMenuPage.class);
+	page.setName("Broodje Martino");
+	page.setPrice( );
+	page.setCategory("Broodjes");
+
+	page = PageFactory.initElements(driver, AddMenuPage.class);
+	page.setName("Tomatensoep");
+	page.setPrice( );
+	page.setCategory("Soepen");
+
+	page = PageFactory.initElements(driver, AddMenuPage.class);
+	page.setName("Lasagne");
+	page.setPrice( );
+	page.setCategory("Pasta");
+}
+
+@When("Jan het overzicht bekijkt")
+public void jan_het_overzicht_bekijkt(){
+	currentPage = PageFactory.initElements(driver, MenuPage.class);
+}
+
+@Then("ziet Jan dat de maaltijden per categorie gegroepeerd staan")
+public void ziet_jan_dat_de_maaltijden_per_categorie_gegroepeerd_staan(){
+	assertEquals("Menu", driver.getTitle());
+	assertTrue(((MenuPage)currentPage).containsMaaltijdWithCategorie("Broodjes"));
+	assertTrue(((MenuPage)currentPage).containsMaaltijdWithCategorie("Soepen"));
+	assertTrue(((MenuPage)currentPage).containsMaaltijdWithCategorie("Pasta"));
+}
