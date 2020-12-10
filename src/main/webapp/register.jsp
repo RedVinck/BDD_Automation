@@ -14,24 +14,33 @@
     <jsp:param name="activePage" value="register"/>
 </jsp:include>
 
-<div class="container">
+<div class="background">
+<div class="container" style="height: 80vh">
     <main>
         <form method="post" action="Controller?command=Register">
             <p>
-                <label for="ssn">SSN</label>
-                <input type="text" id="ssn" name="ssn">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price">
             </p>
             <p>
-                <label for="gender">Gender</label>
-                <input type="text" id="gender" name="gender">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
             </p>
             <p>
-                <label for="length">Length</label>
-                <input type="number" id="length"  name="length">
+                <label for="category">category</label>
+                <input type="category" id="category"  name="category">
             </p>
             <p>
-                <label for="weight">Weight</label>
-                <input type="number" id="weight" name="weight">
+                <label for="vegetarian">vegetarian</label>
+                <input type="checkbox" id="vegetarian" name="vegetarian">
+            </p>
+            <p>
+                <label for="containsLactose">contains Lactose</label>
+                <input type="checkbox" id="containsLactose" name="containsLactose">
+            </p>
+            <p>
+                <label for="containsNuts">contains Nuts</label>
+                <input type="checkbox" id="containsNuts" name="containsNuts">
             </p>
             <p>
                 <input type="submit" id="register" value="Register">
@@ -41,6 +50,6 @@
 </div>
 
 <jsp:include page="footer.jsp"/>
-
+</div>
 </body>
 </html>

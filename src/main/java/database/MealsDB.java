@@ -2,7 +2,6 @@ package database;
 
 import domain.model.Meal;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MealsDB {
@@ -21,15 +20,15 @@ public class MealsDB {
         this.meals = meals;
     }
 
-    public void add(Meal meal){
-      if (!this.meals.contains(meal)){
-          this.meals.add(meal)
-      }
+    public void add(Meal meal) {
+        if (!this.meals.contains(meal)) {
+            this.meals.add(meal);
+        }
     }
 
-    public boolean contains(Meal mail){
-        for (Meal loopedmeal:this.meals){
-            if (loopedmeal.getName().equals(mail.getName()))return true;
+    public boolean contains(Meal mail) {
+        for (Meal meal : this.meals) {
+            if (meal.getName().equals(mail.getName())) return true;
         }
         return false;
     }

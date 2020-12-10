@@ -1,6 +1,6 @@
 package controller;
 
-import domain.service.PatientService;
+import domain.service.MealService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +12,7 @@ import java.io.IOException;
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
 
-    private PatientService service = PatientService.getInstance();
+    private MealService service = MealService.getInstance();
     private HandlerFactory handlerFactory = new HandlerFactory();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,21 +1,21 @@
 package controller;
 
-import domain.service.PatientService;
+import domain.service.MealService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public abstract class RequestHandler {
 
-    protected PatientService service = PatientService.getInstance();
+    protected MealService service = MealService.getInstance();
 
     public abstract String handleRequest (HttpServletRequest request, HttpServletResponse response);
 
-    public void setModel (PatientService contactTracingService) {
+    public void setModel (MealService contactTracingService) {
         this.service = contactTracingService;
     }
 
-    public PatientService getService() {
+    public MealService getService() {
         return service;
     }
 

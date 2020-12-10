@@ -13,10 +13,10 @@ public class MealsPage extends Page {
         driver.get(getPath()+"?command=Overview");
     }
 
-    public boolean containsPatientWithSSN (String ssn) {
+    public boolean containsMealFromName (String naam) {
         List<WebElement> trs = driver.findElements(By.cssSelector("td"));
         for (WebElement tr: trs) {
-            if (tr.getText().equals(ssn)){
+            if (tr.getText().equals(naam)){
                 return true;
             }
         }

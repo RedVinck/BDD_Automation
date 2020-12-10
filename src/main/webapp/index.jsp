@@ -12,8 +12,8 @@
 <jsp:include page="navbar.jsp">
     <jsp:param name="activePage" value="home"/>
 </jsp:include>
-
-<div class="container">
+<div class="background">
+<div class="container" style="height: 80vh">
     <main>
         <div class="jumbotron">
             <h1>Homepage</h1>
@@ -23,6 +23,6 @@
 </div>
 
 <jsp:include page="footer.jsp"/>
-
+</div>
 </body>
 </html>

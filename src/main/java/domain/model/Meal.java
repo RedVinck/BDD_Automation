@@ -17,10 +17,13 @@ public class Meal {
         this.setContainsLactose(false);
     }
 
+    public Meal() {
+    }
+
     public Meal(String name, float price, String category, Boolean nuts, Boolean vegetarian, Boolean lactose){
         this.setName(name);
         this.setPrice(price);
-        this.setCategory(getCategory());
+        this.setCategory(category);
         this.setContainsNuts(nuts);
         this.setVegetarian(vegetarian);
         this.setContainsLactose(lactose);

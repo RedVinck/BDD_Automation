@@ -13,35 +13,46 @@
 <jsp:include page="navbar.jsp">
     <jsp:param name="activePage" value="persons"/>
 </jsp:include>
-
-<div class="container">
+<div class="background">
+<div class="container" style="height: 80vh">
     <main>
-        <h1>Registered patients</h1>
+        <h1>All meals</h1>
         <c:choose>
-            <c:when test="${not empty patients}">
+            <c:when test="${not empty meals}">
                 <table class="table table-striped">
                     <thead class="thead-light">
                     <tr>
-                        <th scope="col">SSN</th>
+                       <th>name</th>
+                        <th>category</th>
+                        <th>containsNuts</th>
+                        <th>vegetarian</th>
+                        <th>containsLactose</th>
+                        <th>price</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="patient" items="${patients}">
+                    <c:forEach var="patient" items="${meals}">
                         <tr>
-                            <td><a href="Controller?command=PatientDetails&ssn=${patient.SSN}"><c:out value='${patient.SSN}'/></a></td>
+                            <td><c:out value='${patient.name}'/></td>
+                            <td><c:out value='${patient.category}'/></td>
+                            <td><c:out value='${patient.containsNuts}'/></td>
+                            <td><c:out value='${patient.vegetarian}'/></td>
+                            <td><c:out value='${patient.containsLactose}'/></td>
+                            <td><c:out value='${patient.price}'/></td>
+
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </c:when>
             <c:otherwise>
-                <p><em>No patients found</em></p>
+                <p><em>No Meals found</em></p>
             </c:otherwise>
         </c:choose>
     </main>
 </div>
 
 <jsp:include page="footer.jsp"/>
-
+</div>
 </body>
 </html>

@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import ui.Page;
 import ui.MealsPage;
-import ui.RegisterPage;
+/*import ui.RegisterPage;*/
 import ui.WebDriverService;
 
 import java.util.List;
@@ -41,9 +41,9 @@ public class ViewAllPatientsSteps {
         driver.quit();
     }
 
-    @Given("there are patients registered")
+    @Given("dat er maaltijden op het menu staan")
     public void there_are_patients_registered() {
-        RegisterPage page = PageFactory.initElements(driver, RegisterPage.class);
+ /*       RegisterPage page = PageFactory.initElements(driver, RegisterPage.class);
         page.setSSN("93051822361");
         page.setGender("MALE");
         page.setLength("180");
@@ -55,19 +55,19 @@ public class ViewAllPatientsSteps {
         page.setGender("FEMALE");
         page.setLength("160");
         page.setWeight("800000");
-        page.submitValid();
+        page.submitValid();*/
+
     }
 
-    @When("Martha requests to get all patients")
+    @When("Jan op het menu kijkt")
     public void martha_requests_to_get_all_patients() {
         currentPage = PageFactory.initElements(driver, MealsPage.class);
     }
 
-    @Then("Martha should be able to get the list of all social security numbers of the registered patients")
+    @Then("worden alle maaltijden getoond die op het menu staan")
     public void martha_should_be_able_to_get_the_list_of_all_social_security_numbers_of_the_registered_patients() {
         assertEquals("Patient Overview - BMI app", driver.getTitle());
-        assertTrue(((MealsPage)currentPage).containsPatientWithSSN("93051822361"));
-        assertTrue(((MealsPage)currentPage).containsPatientWithSSN("87081220062"));
+        assertTrue(((MealsPage)currentPage).containsMealFromName("Zalm"));
     }
 
     @Given("there are no patients registered")
@@ -78,16 +78,16 @@ public class ViewAllPatientsSteps {
     @Then("Martha should be able to get a message that there are no patients registered")
     public void martha_should_be_able_to_get_a_message_that_there_are_no_patients_registered() {
         currentPage = PageFactory.initElements(driver, MealsPage.class);
-        assertFalse(((MealsPage)currentPage).containsPatientWithSSN("93051822361"));
+        assertFalse(((MealsPage)currentPage).containsMealFromName("93051822361"));
         assertTrue(((MealsPage)currentPage).containsErrorMessage("No patients found"));
     }
 
     @Then("Martha should be able to get {string}")
     public void martha_should_be_able_to_get(String ssn) {
-        assertTrue(((MealsPage)currentPage).containsPatientWithSSN(ssn));
+        assertTrue(((MealsPage)currentPage).containsMealFromName(ssn));
     }
 
-    @Given("the following patients are registered")
+/*    @Given("the following patients are registered")
     public void the_following_patients_are_registered(List<String> ssns) {
         RegisterPage page = PageFactory.initElements(driver, RegisterPage.class);
         page.setSSN("93051822361");
@@ -102,6 +102,6 @@ public class ViewAllPatientsSteps {
         page.setLength("160");
         page.setWeight("800000");
         page.submitValid();
-    }
+    }*/
 
 }

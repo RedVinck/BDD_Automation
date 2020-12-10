@@ -1,7 +1,5 @@
 package controller;
 
-import domain.service.PatientService;
-
 public class HandlerFactory {
 
     public RequestHandler getHandler(String handlerName) {

@@ -1,7 +1,6 @@
 package controller;
 
-import domain.model.Patient;
-import domain.service.PatientService;
+import domain.model.Meal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,8 +13,8 @@ public class Register extends RequestHandler {
         String gender = request.getParameter("gender");
         int weight = Integer.parseInt(request.getParameter("weight"));
         int length = Integer.parseInt(request.getParameter("length"));
-        Patient patient = new Patient(ssn, LocalDate.now(), gender, length, weight);
-        service.add(patient);
+        Meal meal = new Meal();
+        service.add(meal);
         return "index.jsp";
     }
 }
