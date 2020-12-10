@@ -12,6 +12,10 @@ Feature: View all meals
     When Wanneer Jan op het menu kijkt
     Then Dan worden alle maaltijden getoond die op het menu staan
 
+
+#  Hier moeten de stories
+
+
 #  Scenario: Er worden geen maaltijden getoond want er staan geen maaltijden op het menu
 #    Given er geen maaltijden op het menu staan
 #    When Wanneer Jan op het menu kijkt
