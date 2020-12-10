@@ -4,6 +4,7 @@ import domain.model.Meal;
 import domain.model.Meal;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MealService {
@@ -30,7 +31,7 @@ public class MealService {
     }
 
     public List<Meal> getAllMeals () {
-        return meals;
+        Collections.sort(meals);return meals;
     }
 
     public void add (Meal meal) {

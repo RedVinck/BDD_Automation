@@ -3,6 +3,8 @@ package database;
 import domain.model.Meal;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class MealsDB {
     private ArrayList<Meal> meals;
@@ -13,6 +15,7 @@ public class MealsDB {
 
 
     public ArrayList<Meal> getMeals() {
+        Collections.sort(meals);
         return meals;
     }
 

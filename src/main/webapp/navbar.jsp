@@ -16,7 +16,7 @@
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
                     <li class="nav-item<c:if test="${param.activePage eq 'persons'}"> active</c:if>">
-                        <a class="nav-link" href="${pageContext.request.contextPath }/Controller?command=Overview">Registered patients</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath }/Controller?command=Overview">Meal Menu</a>
                     </li>
             </ul>
             <ul class="navbar-nav mr-auto">

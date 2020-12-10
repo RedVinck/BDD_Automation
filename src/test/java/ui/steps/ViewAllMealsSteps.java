@@ -66,8 +66,6 @@ public class ViewAllMealsSteps {
         assertEquals("Patient Overview - BMI app", driver.getTitle());
         assertTrue(((MealsPage)currentPage).containsMealFromName("Zalm"));
     }
-
-/*
     @Given("er geen maaltijden op het menu staan")
     public void er_geen_maaltijden_op_het_menu_staan() {
         driver.get(path+"?command=DeleteAll");
@@ -80,10 +78,33 @@ public class ViewAllMealsSteps {
     @Then("krijgt Jan een melding dat er momenteel nog geen maaltijden op het menu  staan")
     public void krijgtJanEenMeldingDatErMomenteelNogGeenMaaltijdenOpHetMenuStaan() {
         currentPage = PageFactory.initElements(driver, MealsPage.class);
-        assertFalse(((MealsPage)currentPage).containsMealFromName("93051822361"));
-        assertTrue(((MealsPage)currentPage).containsErrorMessage("No patients found"));
+        assertFalse(((MealsPage)currentPage).containsMealFromName("Zalm"));
+        assertTrue(((MealsPage)currentPage).containsErrorMessage("No Meals found"));
     }
-*/
+
+
+
+
+    @Given("dat er maaltijden zijn waar extra informatie bij hoort")
+    public void datErMaaltijdenZijnWaarExtraInformatieBijHoort() {
+    }
+
+    @Then("zou Jan het menu te zien moeten krijgen met bij elke maaltijd extra informatie over wat deze bevat.")
+    public void zouJanHetMenuTeZienMoetenKrijgenMetBijElkeMaaltijdExtraInformatieOverWatDezeBevat() {
+    }
+
+    @Then("ziet “Jan” bij elke maaltijd de prijs van de maaltijd")
+    public void zietJanBijElkeMaaltijdDePrijsVanDeMaaltijd() {
+    }
+
+    @Given("er maaltijden van verschillende categorieën op het menu staan")
+    public void erMaaltijdenVanVerschillendeCategorieënOpHetMenuStaan() {
+    }
+
+    @Then("ziet “Jan” dat de maaltijden per categorie gegroepeerd staan")
+    public void zietJanDatDeMaaltijdenPerCategorieGegroepeerdStaan() {
+    }
+
 
 
 

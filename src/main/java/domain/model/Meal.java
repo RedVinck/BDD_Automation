@@ -1,6 +1,6 @@
 package domain.model;
 
-public class Meal {
+public class Meal implements Comparable<Meal> {
     private float price;
     private String name;
     private String category;
@@ -77,4 +77,13 @@ public class Meal {
         this.containsLactose = containsLactose;
     }
 
+    @Override
+    public int compareTo(Meal meal) {
+        if (getCategory() == null || meal.getCategory() == null) {
+            return 0;
+        } else {
+            return getCategory().compareTo(meal.getCategory());
+        }
+
+    }
 }
