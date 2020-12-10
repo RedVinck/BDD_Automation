@@ -34,6 +34,7 @@ Feature: View all meals
       Then ziet “Jan” bij elke maaltijd de prijs van de maaltijd
 
   Rule: Maaltijden worden gegroepeerd per categorie
+
     Scenario:  Jan bekijkt het overzicht
       Given er maaltijden van verschillende categorieën op het menu staan
       When Wanneer Jan op het menu kijkt

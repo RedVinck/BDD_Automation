@@ -71,10 +71,6 @@ public class ViewAllMealsSteps {
         driver.get(path+"?command=DeleteAll");
     }
 
-    @When("Jan op het menu kijkt")
-    public void janOpHetMenuKijkt() {
-    }
-
     @Then("krijgt Jan een melding dat er momenteel nog geen maaltijden op het menu  staan")
     public void krijgtJanEenMeldingDatErMomenteelNogGeenMaaltijdenOpHetMenuStaan() {
         currentPage = PageFactory.initElements(driver, MealsPage.class);
@@ -87,10 +83,31 @@ public class ViewAllMealsSteps {
 
     @Given("dat er maaltijden zijn waar extra informatie bij hoort")
     public void datErMaaltijdenZijnWaarExtraInformatieBijHoort() {
+        RegisterPage page = PageFactory.initElements(driver, RegisterPage.class);
+        page.setNameField("Zalm");
+        page.setCategoryField("Vis");
+        page.setPriceField(50);
+        page.setContainsLactoseButton(false);
+        page.setVegetarianField(false);
+        page.setContainsNutsButton(true);
+        page.submitValid();
+
+        page = PageFactory.initElements(driver, RegisterPage.class);
+        page.setNameField("Groensels");
+        page.setCategoryField("koud");
+        page.setPriceField(50);
+        page.setContainsLactoseButton(false);
+        page.setVegetarianField(true);
+        page.setContainsNutsButton(false);
+        page.submitValid();
     }
 
     @Then("zou Jan het menu te zien moeten krijgen met bij elke maaltijd extra informatie over wat deze bevat.")
     public void zouJanHetMenuTeZienMoetenKrijgenMetBijElkeMaaltijdExtraInformatieOverWatDezeBevat() {
+        currentPage = PageFactory.initElements(driver, MealsPage.class);
+        assertTrue(((MealsPage)currentPage).containsMealFromName("Zalm"));
+        assertTrue(((MealsPage)currentPage).containsMealFromName("Groensels"));
+        assertTrue(((MealsPage)currentPage).containsNutsFromName("Zalm",true));
     }
 
     @Then("ziet “Jan” bij elke maaltijd de prijs van de maaltijd")

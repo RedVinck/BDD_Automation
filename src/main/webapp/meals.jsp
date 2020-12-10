@@ -32,7 +32,7 @@
                     </thead>
                     <tbody>
                     <c:forEach var="patient" items="${meals}">
-                        <tr>
+                        <tr id="<c:out value='${patient.name}'/>">
                             <td><c:out value='${patient.name}'/></td>
                             <td><c:out value='${patient.category}'/></td>
                             <td><c:out value='${patient.containsNuts}'/></td>

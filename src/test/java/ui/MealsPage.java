@@ -27,4 +27,14 @@ public class MealsPage extends Page {
         WebElement error = driver.findElement(By.cssSelector("em"));
         return error.getText().equals(ssn);
     }
+
+    public boolean containsNutsFromName(String zalm,boolean containsNuts) {
+//  Fix me
+       /* WebElement table = driver.findElement(By.cssSelector("table"));
+
+        List<WebElement> firstCells = table.findElements(By.id(zalm));
+        firstCells.forEach(fe-> fe.getText().equals(containsNuts));
+        return false;*/
+        return false;
+    }
 }
