@@ -9,7 +9,7 @@ Feature: Maaltijdoverzicht
 	Rule: Toon alle maaltijden die op het menu staan
 	Scenario: Alle maaltijden worden getoond
 		Gegeven dat er maaltijden op het menu staan
-		Wanneer “Jan” op het menu kijkt
+		Wanneer Jan op het menu kijkt
 		Dan worden alle maaltijden getoond die op het menu staan
 	Scenario: Er worden geen maaltijden getoond want er staan geen maaltijden op het menu
 		Gegeven er geen maaltijden op het menu staan

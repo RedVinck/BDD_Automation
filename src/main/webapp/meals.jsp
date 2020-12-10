@@ -46,7 +46,7 @@
                 </table>
             </c:when>
             <c:otherwise>
-                <p><em>No Meals found</em></p>
+                <p id="NoMealsFound"><em>No Meals found</em></p>
             </c:otherwise>
         </c:choose>
     </main>

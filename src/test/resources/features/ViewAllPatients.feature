@@ -1,19 +1,19 @@
-Feature: View all patients
+Feature: View all meals
 
   As a caretaker
   I want to get the list of all patients
   In order to consult the data of a certain patient
 
-   # Personas
-   # Martha - caretaker
+	#Personas
+	# Jan - Klant
 
-  Scenario: Caretaker gets the list of all social security numbers
-    Given there are patients registered
-    When Martha requests to get all patients
-    Then Martha should be able to get the list of all social security numbers of the registered patients
+  Scenario: Alle maaltijden worden getoond
+    Given dat er maaltijden op het menu staan
+    When Wanneer Jan op het menu kijkt
+    Then Dan worden alle maaltijden getoond die op het menu staan
 
-  Scenario: Caretaker gets no results when there are no patients registered
-    Given there are no patients registered
-    When Martha requests to get all patients
-    Then Martha should be able to get a message that there are no patients registered
+#  Scenario: Er worden geen maaltijden getoond want er staan geen maaltijden op het menu
+#    Given er geen maaltijden op het menu staan
+#    When Wanneer Jan op het menu kijkt
+#    Then krijgt Jan een melding dat er momenteel nog geen maaltijden op het menu  staan
 

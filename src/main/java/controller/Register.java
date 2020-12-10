@@ -9,12 +9,21 @@ import java.time.LocalDate;
 public class Register extends RequestHandler {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-        String ssn = request.getParameter("ssn");
-        String gender = request.getParameter("gender");
-        int weight = Integer.parseInt(request.getParameter("weight"));
-        int length = Integer.parseInt(request.getParameter("length"));
-        Meal meal = new Meal();
+        String name = request.getParameter("name");
+        String category = request.getParameter("category");
+        int price = Integer.parseInt(request.getParameter("price"));
+        boolean vegetarian = Boolean.parseBoolean((request.getParameter("vegetarian")));
+        boolean containsNuts = Boolean.parseBoolean((request.getParameter("containsNuts")));
+        boolean containsLactose = Boolean.parseBoolean((request.getParameter("containsLactose")));
+        Meal meal = new Meal( name,  price,  category,  containsNuts,  vegetarian,  containsLactose);
         service.add(meal);
         return "index.jsp";
     }
 }
+/*
+    private float price;
+    private String name;
+    private String category;
+    private Boolean containsNuts;
+    private Boolean vegetarian;
+    private Boolean containsLactose;*/

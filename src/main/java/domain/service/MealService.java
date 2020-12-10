@@ -18,7 +18,7 @@ public class MealService {
     private List<Meal> meals = new ArrayList<Meal>();
 
     public MealService() {
-        meals.add(new Meal("Zalm",5,"Vis"));
+//        meals.add(new Meal("Zalm",5,"Vis"));
     }
 
     public static MealService getInstance() {
