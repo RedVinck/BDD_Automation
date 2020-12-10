@@ -14,8 +14,8 @@
     <jsp:param name="activePage" value="register"/>
 </jsp:include>
 
-<div class="background">
-<div class="container" style="height: 80vh">
+<div class="background" style="height: 80vh">
+<div class="container jumbotron" style="background: #e9eceff1">
     <main>
         <form method="post" action="Controller?command=Register">
             <p>

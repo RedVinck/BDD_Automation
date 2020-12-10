@@ -15,7 +15,7 @@
 <div class="background">
 <div class="container" style="height: 80vh">
     <main>
-        <div class="jumbotron">
+        <div class="jumbotron" style="background: #e9eceff1">
             <h1>Homepage</h1>
             <p>This is the homepage.</p>
         </div>

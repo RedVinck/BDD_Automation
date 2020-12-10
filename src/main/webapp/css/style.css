@@ -20,6 +20,11 @@ footer {
     background-size: cover;
 }
 
+.card{
+    padding: 30px;
+    background-color: #e9eceff1;
+}
+
 .covidPositive {
     background: #f00;
     color: #eee;
