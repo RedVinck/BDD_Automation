@@ -53,7 +53,6 @@ public class ViewAllMealsSteps {
         page.setContainsNutsButton(false);
         page.submitValid();
 
-
     }
 
     @When("Wanneer Jan op het menu kijkt")
@@ -107,19 +106,65 @@ public class ViewAllMealsSteps {
         currentPage = PageFactory.initElements(driver, MealsPage.class);
         assertTrue(((MealsPage)currentPage).containsMealFromName("Zalm"));
         assertTrue(((MealsPage)currentPage).containsMealFromName("Groensels"));
-        assertTrue(((MealsPage)currentPage).containsNutsFromName("Zalm",true));
+        assertTrue(((MealsPage)currentPage).containsNutsFromName("Zalm",false));
+        assertTrue(((MealsPage)currentPage).containsVegiFromName("Zalm",false));
+        assertTrue(((MealsPage)currentPage).containsLactoseFromName("Zalm",false));
     }
 
     @Then("ziet “Jan” bij elke maaltijd de prijs van de maaltijd")
     public void zietJanBijElkeMaaltijdDePrijsVanDeMaaltijd() {
+        currentPage = PageFactory.initElements(driver, MealsPage.class);
+        assertTrue(((MealsPage)currentPage).containsMealFromName("Zalm"));
+        assertTrue(((MealsPage)currentPage).containsPriceFromName("Zalm",50));
     }
 
     @Given("er maaltijden van verschillende categorieën op het menu staan")
     public void erMaaltijdenVanVerschillendeCategorieënOpHetMenuStaan() {
+        RegisterPage page = PageFactory.initElements(driver, RegisterPage.class);
+        page.setNameField("Zalm");
+        page.setCategoryField("Vis");
+        page.setPriceField(50);
+        page.setContainsLactoseButton(false);
+        page.setVegetarianField(false);
+        page.setContainsNutsButton(true);
+        page.submitValid();
+
+
+
+        page = PageFactory.initElements(driver, RegisterPage.class);
+        page.setNameField("Kaas");
+        page.setCategoryField("Koud");
+        page.setPriceField(50);
+        page.setContainsLactoseButton(false);
+        page.setVegetarianField(true);
+        page.setContainsNutsButton(false);
+        page.submitValid();
+
+        page = PageFactory.initElements(driver, RegisterPage.class);
+        page.setNameField("Tonijn");
+        page.setCategoryField("Vis");
+        page.setPriceField(50);
+        page.setContainsLactoseButton(false);
+        page.setVegetarianField(false);
+        page.setContainsNutsButton(true);
+        page.submitValid();
+
+        page = PageFactory.initElements(driver, RegisterPage.class);
+        page.setNameField("Hesp");
+        page.setCategoryField("Koud");
+        page.setPriceField(50);
+        page.setContainsLactoseButton(false);
+        page.setVegetarianField(false);
+        page.setContainsNutsButton(true);
+        page.submitValid();
+
     }
 
     @Then("ziet “Jan” dat de maaltijden per categorie gegroepeerd staan")
     public void zietJanDatDeMaaltijdenPerCategorieGegroepeerdStaan() {
+        currentPage = PageFactory.initElements(driver, MealsPage.class);
+        String[] paramaters= {"Kaas","Hesp","Zalm","Tonijn"};
+        assertTrue(((MealsPage)currentPage).containsOrderList(paramaters));
     }
 
 
